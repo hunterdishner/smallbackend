@@ -5,7 +5,9 @@ This structure of web app is something that my mentor taught me back in 2018 whe
 
 Both of these packages are something I first wrote in 2019 but then made public in 2020. GoMux itself could use some more security scrutiny as I'm sure its not 100% rock solid but it does at least handle Cors, TLS, and plays well with a reverse proxy too. 
 
-Typically I'd stand this type of service up with an authentication service, a reverse proxy, and host it in cloud run with GCP. Pairing those 3 with cloudflare and a small CDN network for the front end has usually worked well for me, but admittedly I've had devops engineers that have helped me with that over the years. 
+Typically I'd stand this type of service up with an authentication service, a reverse proxy, and host it in cloud run with GCP. Pairing those 3 with cloudflare has usually worked well for me. Admittedly though, I've had some help from more focused DevOps engineers when it comes to that. 
+
+This repo does use a config.json file and that has information like the URLs for the external services, some cors settings, and then can be expanded to hold much more. 
 
 ### Run Instructions
 
