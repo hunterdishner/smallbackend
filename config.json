@@ -8,5 +8,5 @@
         "Origin", "Content-Type", "Accept", "Authorization"
     ],
     "nameApiUrl": "https://names.mcquay.me/api/v0/",
-    "jokeApiUrl": "https://geek-jokes.sameerkumar.website/api?format=json"
+    "jokeApiUrl": "http://joke.loc8u.com:8888/joke?limitTo=nerdy"
 }

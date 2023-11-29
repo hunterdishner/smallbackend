@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  app:
+    build:
+      dockerfile: 1.21-alpine3.17
+      context: .
+      target: dev
+    volumes:
+      - .:/opt/app/api

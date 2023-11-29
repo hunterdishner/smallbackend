@@ -6,5 +6,7 @@ import (
 )
 
 func (s *HttpService) Joke(w io.Writer, r *http.Request) (interface{}, error) {
-	return s.app.NewJoke() // muxxer handles the error
+	values := r.URL.Query()
+
+	return s.app.NewJoke(values.Get("firstName"), values.Get("lastName")) // muxxer handles the error
 }

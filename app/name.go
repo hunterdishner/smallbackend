@@ -2,7 +2,6 @@ package app
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/hunterdishner/errors"
@@ -13,10 +12,10 @@ type RandomName struct {
 	LastName  string `json:"last_name"`
 }
 
-func (s *AppService) RandomName() (string, error) {
+func (s *AppService) RandomName() (*RandomName, error) {
 	resp, err := s.client.Get(s.nameUrl)
 	if err != nil {
-		return "", errors.E(errors.CodeServerError, errors.CodeBadRequest, err)
+		return nil, errors.E(errors.CodeServerError, errors.CodeBadRequest, err)
 	}
 	defer resp.Body.Close()
 
@@ -24,11 +23,11 @@ func (s *AppService) RandomName() (string, error) {
 		name := &RandomName{}
 		err = json.NewDecoder(resp.Body).Decode(name)
 		if err != nil {
-			return "", errors.E(errors.CodeServerError, errors.Decoding, err)
+			return nil, errors.E(errors.CodeServerError, errors.Decoding, err)
 		}
 
-		return fmt.Sprintf("%s %s", name.FirstName, name.LastName), nil
+		return name, nil
 	}
 
-	return "John Doe", nil //other services can be unpredictable, lets default it if it fails.
+	return &RandomName{FirstName: "John", LastName: "Doe"}, nil //This service rate limits at about 10 request per second, so lets give a default if we hit that.
 }
