@@ -11,7 +11,7 @@ This repo does use a config.json file and that has information like the URLs for
 
 ### Run Instructions
 
-You will need the latest version of go 1.21 installed and the latest version of docker. I devleoped this on a windows machine so hopefully that doesn't cause any issues with Mac / Linux.
+You will need the latest version of go 1.21 installed and the latest version of docker. I developed this on a windows machine so hopefully that doesn't cause any issues with Mac / Linux.
 
 Open up the repo and initially you may need to run `go get github.com/hunterdishner/gomux` and `go get github.com/hunterdishner/errors` just to be sure its pulled both packages down to your machine.
 
