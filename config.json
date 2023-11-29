@@ -1,3 +1,10 @@
 {
-    "allowedOrigins": "http://localhost"
+    "allowedOrigins": "http://localhost",
+    "allowedMethods": [
+        "GET"
+    ],
+    "corsCredentials": true,
+    "allowedHeaders" : [
+        "Origin", "Content-Type", "Accept", "Authorization"
+    ]
 }

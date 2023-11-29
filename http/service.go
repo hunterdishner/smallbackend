@@ -5,6 +5,7 @@ import (
 
 	"github.com/hunterdishner/gomux"
 	"github.com/hunterdishner/wildfire/app"
+	"github.com/hunterdishner/wildfire/config"
 	"github.com/rs/cors"
 )
 
@@ -14,16 +15,16 @@ type HttpService struct {
 	// whatever else, message queue system, cache, websockets, etc
 }
 
-func New(app *app.AppService) *HttpService {
+func New(app *app.AppService, config *config.Config) *HttpService {
 	s := &HttpService{
 		app: app,
 	}
 
 	cors := cors.New(cors.Options{
-		AllowedOrigins:   []string{"https://localhost"}, //swap to configurable variable with JSON file or something
-		AllowCredentials: true,
-		AllowedMethods:   []string{"GET", "POST", "OPTIONS", "PUT", "DELETE"},
-		AllowedHeaders:   []string{"Origin", "Content-Type", "Accept", "Authorization"},
+		AllowedOrigins:   []string{config.AllowedOrigins},
+		AllowCredentials: config.CorsCredentials,
+		AllowedMethods:   config.AllowedMethods,
+		AllowedHeaders:   config.AllowedHeaders,
 	})
 
 	s.router = gomux.New(context.Background(), "api", gomux.Port(10000), gomux.CustomCors(cors)) //needs TLS cert but using option gomux.TLS() and naming the files appropriately
