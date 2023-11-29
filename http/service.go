@@ -29,8 +29,7 @@ func New(app *app.AppService, config *config.Config) *HttpService {
 		AllowedHeaders:   config.AllowedHeaders,
 	})
 
-	s.router = gomux.New(context.Background(), "api", gomux.Port(10000), gomux.CustomCors(cors)) //TODO: needs TLS cert but using option gomux.TLS() and naming the files server.crt and server.key.
-	//I didn't generate these for this repo due to time. Test Url goes to https once that option is passed in.
+	s.router = gomux.New(context.Background(), "api", gomux.Port(10000), gomux.CustomCors(cors)) //TODO: Generate a new server.crt and server.key for TLS options. The one in this repo is an old one.
 
 	s.router.AddRoutes(
 		gomux.Get("/joke", s.Joke),
