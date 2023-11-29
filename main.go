@@ -21,6 +21,6 @@ func main() {
 
 	server := httpd.New(app, cfg)
 
-	log.Fatal(server.Serve()) //may need panic recovery depending on what environment its hosted on.
+	log.Fatal(server.Serve()) //TODO: This service may need panic recovery if not hosted with a self healing environment
 	//GCP had self healing so we cared more about logging the crash since GCP would self heal the container
 }
