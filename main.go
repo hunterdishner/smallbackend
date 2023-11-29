@@ -17,7 +17,7 @@ func main() {
 		return // lets not run unconfigured
 	}
 
-	app := app.New() //business logic layer
+	app := app.New(cfg) //business logic layer
 
 	server := httpd.New(app, cfg)
 

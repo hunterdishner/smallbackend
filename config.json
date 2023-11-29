@@ -6,5 +6,7 @@
     "corsCredentials": true,
     "allowedHeaders" : [
         "Origin", "Content-Type", "Accept", "Authorization"
-    ]
+    ],
+    "nameApiUrl": "https://names.mcquay.me/api/v0/",
+    "jokeApiUrl": "https://geek-jokes.sameerkumar.website/api?format=json"
 }

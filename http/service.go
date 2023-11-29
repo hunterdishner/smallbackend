@@ -12,12 +12,14 @@ import (
 type HttpService struct {
 	router *gomux.Server
 	app    *app.AppService
+	cfg    *config.Config
 	// whatever else, message queue system, cache, websockets, etc
 }
 
 func New(app *app.AppService, config *config.Config) *HttpService {
 	s := &HttpService{
 		app: app,
+		cfg: config,
 	}
 
 	cors := cors.New(cors.Options{
@@ -30,7 +32,7 @@ func New(app *app.AppService, config *config.Config) *HttpService {
 	s.router = gomux.New(context.Background(), "api", gomux.Port(10000), gomux.CustomCors(cors)) //needs TLS cert but using option gomux.TLS() and naming the files appropriately
 
 	s.router.AddRoutes(
-		gomux.Get("/joke", Joke),
+		gomux.Get("/joke", s.Joke),
 	)
 
 	return s

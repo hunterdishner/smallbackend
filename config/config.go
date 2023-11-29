@@ -5,6 +5,7 @@ type Config struct {
 	AllowedMethods  []string `json:"allowedMethods"`
 	CorsCredentials bool     `json:"corsCredentials"`
 	AllowedHeaders  []string `json:"allowedHeaders"`
+	NameApiURL      string   `json:"nameApiUrl"`
+	JokeApiURL      string   `json:"jokeApiUrl"`
 	// stuff like JWT access keys
-	// API Keys needed for other services, etc
 }
