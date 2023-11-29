@@ -16,10 +16,11 @@ func main() {
 		log.Fatalf("Error loading config file, %+v", err)
 		return // lets not run unconfigured
 	}
-	//custom cors as default allows all origins for testing
-	app := app.New()
+
+	app := app.New() //business logic layer
 
 	server := httpd.New(app, cfg)
 
-	log.Fatal(server.Serve())
+	log.Fatal(server.Serve()) //may need panic recovery depending on what environment its hosted on.
+	//GCP had self healing so we cared more about logging the crash since GCP would self heal the container
 }

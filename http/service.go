@@ -33,7 +33,6 @@ func New(app *app.AppService, config *config.Config) *HttpService {
 		gomux.Get("/joke", Joke),
 	)
 
-	//add panic recovery or some sort of log fatal
 	return s
 }
 
