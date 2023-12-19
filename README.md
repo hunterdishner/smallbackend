@@ -1,6 +1,4 @@
-# Wildfire
-
-## Wildfire joke web service
+# Small joke web service
 This structure of web app is something that my mentor taught me back in 2018 when I first started using go. It focuses on defining a service for each layer (http, app, database, etc) and using those layers to build on top of each other. I've used two personal repos of mine https://github.com/hunterdishner/gomux and https://github.com/hunterdishner/errors . GoMux, wraps gorilla mux into an easier to use version that has automatic struct marshaling into json and error handling. Mainly, it detects if there is an struct of type errors (my other package) and if it is it will return the error code defined in that error and marshal it into jason. If the struct type was anything other than error then it assumes a 200 OK and marshals the struct into json (in this case just a string accoridng to directions example). 
 
 Both of these packages are something I first wrote in 2019 but then made public in 2020. GoMux itself could use some more security scrutiny as I'm sure its not 100% rock solid but it does at least handle Cors, TLS, and plays well with a reverse proxy too. 
